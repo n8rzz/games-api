@@ -33,11 +33,6 @@ class GamesController < ApplicationController
     end
   end
 
-  # DELETE /games/1
-  def destroy
-    @game.destroy
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game

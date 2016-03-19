@@ -1,9 +1,10 @@
+require 'securerandom'
+
 FactoryGirl.define do
   factory :game do
-    id "MyString"
-title "MyString"
-votes 1
-status "MyString"
+    id SecureRandom.uuid
+    title Faker::App.name
+    votes Faker::Number.between(1, 1000)
+    status 'ownit'
   end
-
 end
