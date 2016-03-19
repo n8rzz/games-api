@@ -6,6 +6,8 @@ gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'puma'
 gem 'pg'
 gem 'faker', '~> 1.5.0'
+# Use ActiveModelSerializers to serialize JSON responses
+gem 'active_model_serializers', '~> 0.10.0.rc2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
 # Use Redis adapter to run Action Cable in production
