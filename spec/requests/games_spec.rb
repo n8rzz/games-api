@@ -96,11 +96,10 @@ describe 'Games', :type => :request do
     it 'delete all games' do
       FactoryGirl.create :game, title: 'One'
       FactoryGirl.create :game, title: 'Two'
-      FactoryGirl.create :game, title: 'Three'
 
       post '/games/clear'
 
-      expect(response.status).to eq 204
+      expect(response.status).to eq 200
     end
   end
 end

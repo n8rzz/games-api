@@ -46,13 +46,9 @@ class GamesController < ApplicationController
 
   def clear
     @games = Game.all
-    if @games.length > 0
-      @games.delete_all
-      render json: nothing, :status => 204
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
+    @games.delete_all
 
+    render json: @games
   end
 
   private
