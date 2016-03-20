@@ -84,11 +84,21 @@ describe 'Games', :type => :request do
         params: game_request.to_json,
         headers: { 'Content-Type': 'application/json' }
 
-        expect(response.status).to eq 200
+      expect(response.status).to eq 200
 
-        body = JSON.parse(response.body)
-        game_votes = body['votes']
-        expect(game_votes) == 5
+      body = JSON.parse(response.body)
+      game_votes = body['votes']
+      expect(game_votes) == 5
+
+      post gameIdUrl,
+        params: game_request.to_json,
+        headers: { 'Content-Type': 'application/json' }
+
+      expect(response.status).to eq 200
+
+      body = JSON.parse(response.body)
+      game_votes = body['votes']
+      expect(game_votes) == 6
     end
   end
 
