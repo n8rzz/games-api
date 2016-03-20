@@ -33,6 +33,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def clear
+    if @game.length > 0
+      Game.delete_all
+    end
+
+    render json: nothing, :status => 204
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
