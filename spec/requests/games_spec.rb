@@ -32,4 +32,55 @@ describe 'Games', :type => :request do
       expect(game_title) == 'First Game'
     end
   end
+
+  describe 'POST /games' do
+    it 'creates the specified game' do
+      game_request = attributes_for(:new_game)
+
+      post '/games',
+        params: game_request.to_json,
+        headers: { 'Content-Type': 'application/json' }
+
+        expect(response.status).to eq 201
+
+        body = JSON.parse(response.body)
+        game_title = body['title']
+        expect(game_title) == game_request['title']
+    end
+  end
+
+  describe 'PUT /games/:id' do
+    it 'updates the specified game' do
+      uuid = SecureRandom.uuid
+      gameIdUrl = "/games/#{uuid}"
+      FactoryGirl.create :game, id: uuid, title: 'E.T.'
+
+      game_request = {
+        id: "#{uuid}",
+        title: 'Metal Gear Solid'
+      }
+
+      put gameIdUrl,
+        params: game_request.to_json,
+        headers: { 'Content-Type': 'application/json' }
+
+        expect(response.status).to eq 200
+
+        body = JSON.parse(response.body)
+        game_title = body['title']
+        expect(game_title) == game_request['title']
+    end
+  end
+
+  # describe 'DELETE /games/:id' do
+  #   it 'deletes the specified game' do
+  #     uuid = SecureRandom.uuid
+  #     gameIdUrl = "/games/#{uuid}"
+  #     FactoryGirl.create :game, id: uuid
+  #
+  #     delete gameIdUrl
+  #
+  #     expect(response.status).to eq 204
+  #   end
+  # end
 end

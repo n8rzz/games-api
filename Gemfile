@@ -22,7 +22,7 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'rspec-rails', '3.1.0'
+  gem 'rspec-rails', '3.1.0' # :branch => 'rails-5-support' 
   gem 'byebug'
   gem 'better_errors', '~>2.1.1'
   gem 'database_cleaner'
