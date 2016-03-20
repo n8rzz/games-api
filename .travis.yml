@@ -1,18 +1,19 @@
 language: ruby
 rvm: 2.2.2
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - RAILS_ENV=test bundle exec rspec
-
-# whitelist
+- RAILS_ENV=test bundle exec rake db:migrate
+- RAILS_ENV=test bundle exec rspec
 branches:
   only:
-    - develop
-    - master
+  - develop
+  - master
 after_success:
-  - coveralls
+- coveralls
+deploy:
+  api_key:
+    secure: bD21YTy8Fu9blbxwMgTYC4jrqzmSUtj5TpnPfJVFdpEpMfrQQBQubpxNAOnpaLB2eri3bw9ooMLMwijcyQd8YX+HVKcusVhIe0fbDgJ4QVpVBOut7XMH3TH1shdixHvJieLkGSV4LxOykEm59BM5RKaRhjRGRYSEYBXL6ZPn0UMYf+E5qk5xGkyhWjf4iqvn3LvC2XXcOsi4XqdqmWG86owxiOtJPao3dcuBBw6T1y91doocsY7IMz2Lc6SASsQ1/eOWO9TuER3qYI8gEVMwqvmmKm2Uli0lHQNdR4apecDlyn0kUk3Jwk7P5ay0rAkhsJn38rg9GyuGPn4ZkhzuYI18B7e8FgpHSExezIZp2jwbJcGzuDcJlZotqWz03owvoxirN3ppctU1iuJI5fjNl3SDh0QX3lmsEEMEyb0TN2GkJ69+/ObQB/Pm0fqY6Fhavf1AsKqKZY306ehCtKQm0iNZlSAeCbpvgZ60QZNtjf8QmOB3HHis0IuCt0WycG6WLNCWJOgD73pyX8arLuQ8M3kEcYCi+jQAuqmQ0k7c5d0zZmBmvidCbhuCFiRgfX45mFXS07BshQEfRIj/F6UPAQBUSu9HZxdYxuQSx/ErlesZfKHduXMvuPmJ2J/4XjMNL6DIpL8i4pnj60hj6zvE1lUdigcEi1wOSeswWCUvn6A=
