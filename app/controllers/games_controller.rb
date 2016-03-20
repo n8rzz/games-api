@@ -37,7 +37,7 @@ class GamesController < ApplicationController
   def vote
     @game = Game.find(params[:id])
 
-    if @game.increment(:votes, 1)
+    if @game.increment!(:votes, 1)
       render json: @game
     else
       render json: @game.errors, status: :unprocessable_entity
