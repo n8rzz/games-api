@@ -33,12 +33,26 @@ class GamesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /games/1
+  def vote
+    @game = Game.find(params[:id])
+
+    if @game.increment(:votes, 1)
+      render json: @game
+    else
+      render json: @game.errors, status: :unprocessable_entity
+    end
+  end
+
   def clear
-    if @game.length > 0
-      Game.delete_all
+    @games = Game.all
+    if @games.length > 0
+      @games.delete_all
+      render json: nothing, :status => 204
+    else
+      render json: @game.errors, status: :unprocessable_entity
     end
 
-    render json: nothing, :status => 204
   end
 
   private

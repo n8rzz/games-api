@@ -72,15 +72,35 @@ describe 'Games', :type => :request do
     end
   end
 
-  # describe 'DELETE /games/:id' do
-  #   it 'deletes the specified game' do
-  #     uuid = SecureRandom.uuid
-  #     gameIdUrl = "/games/#{uuid}"
-  #     FactoryGirl.create :game, id: uuid
-  #
-  #     delete gameIdUrl
-  #
-  #     expect(response.status).to eq 204
-  #   end
-  # end
+  describe 'POST /games/:id/vote' do
+    it 'increments the specified game\'s vote count'  do
+      uuid = SecureRandom.uuid
+      gameIdUrl = "/games/#{uuid}/vote"
+      FactoryGirl.create :game, id: uuid, votes: 4
+
+      game_request = { id: "#{uuid}" }
+
+      post gameIdUrl,
+        params: game_request.to_json,
+        headers: { 'Content-Type': 'application/json' }
+
+        expect(response.status).to eq 200
+
+        body = JSON.parse(response.body)
+        game_votes = body['votes']
+        expect(game_votes) == 5
+    end
+  end
+
+  describe 'POST /games/clear' do
+    it 'delete all games' do
+      FactoryGirl.create :game, title: 'One'
+      FactoryGirl.create :game, title: 'Two'
+      FactoryGirl.create :game, title: 'Three'
+
+      post '/games/clear'
+
+      expect(response.status).to eq 204
+    end
+  end
 end
