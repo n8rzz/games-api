@@ -9,6 +9,7 @@ gem 'faker', '~> 1.5.0'
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', :require => 'rack/cors'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'rspec-rails', '3.1.0' # :branch => 'rails-5-support'
