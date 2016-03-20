@@ -33,7 +33,7 @@ class GamesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /games/1
+  # POST /games/1/vote
   def vote
     @game = Game.find(params[:id])
 
@@ -44,6 +44,20 @@ class GamesController < ApplicationController
     end
   end
 
+  # POST /games/1/owned
+  def owned
+    @game = Game.find(params[:id])
+
+    if @game.status == 'wantit'
+      @game.status = 'ownit'
+
+      render json: @game
+    else
+      render json: @game.errors, status: :unprocessable_entity
+    end
+  end
+
+  # POST /games/clear
   def clear
     @games = Game.all
     @games.delete_all

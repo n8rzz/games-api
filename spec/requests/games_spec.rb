@@ -92,6 +92,26 @@ describe 'Games', :type => :request do
     end
   end
 
+  describe 'POST /games/:id/owned' do
+    it 'changes game\'s status from wantit to owneit'  do
+      uuid = SecureRandom.uuid
+      gameIdUrl = "/games/#{uuid}/owned"
+      FactoryGirl.create :game, id: uuid, status: 'wantit'
+
+      game_request = { id: "#{uuid}" }
+
+      post gameIdUrl,
+        params: game_request.to_json,
+        headers: { 'Content-Type': 'application/json' }
+
+        expect(response.status).to eq 200
+
+        body = JSON.parse(response.body)
+        game_status = body['status']
+        expect(game_status) == 'ownit'
+    end
+  end
+
   describe 'POST /games/clear' do
     it 'delete all games' do
       FactoryGirl.create :game, title: 'One'
