@@ -38,14 +38,14 @@ describe 'Games', :type => :request do
       game_request = attributes_for(:new_game)
 
       post '/games',
-        params: game_request.to_json,
-        headers: { 'Content-Type': 'application/json' }
+          params: game_request.to_json,
+          headers: { 'Content-Type' => 'application/json' }
 
-        expect(response.status).to eq 201
+      expect(response.status).to eq 201
 
-        body = JSON.parse(response.body)
-        game_title = body['title']
-        expect(game_title) == game_request['title']
+      body = JSON.parse(response.body)
+      game_title = body['title']
+      expect(game_title) == game_request['title']
     end
   end
 
@@ -61,14 +61,14 @@ describe 'Games', :type => :request do
       }
 
       put gameIdUrl,
-        params: game_request.to_json,
-        headers: { 'Content-Type': 'application/json' }
+          params: game_request.to_json,
+          headers: { 'Content-Type' => 'application/json' }
 
-        expect(response.status).to eq 200
+      expect(response.status).to eq 200
 
-        body = JSON.parse(response.body)
-        game_title = body['title']
-        expect(game_title) == game_request['title']
+      body = JSON.parse(response.body)
+      game_title = body['title']
+      expect(game_title) == game_request['title']
     end
   end
 
@@ -81,8 +81,8 @@ describe 'Games', :type => :request do
       game_request = { id: "#{uuid}" }
 
       post gameIdUrl,
-        params: game_request.to_json,
-        headers: { 'Content-Type': 'application/json' }
+           params: game_request.to_json,
+           headers: { 'Content-Type' => 'application/json' }
 
       expect(response.status).to eq 200
 
@@ -91,8 +91,8 @@ describe 'Games', :type => :request do
       expect(game_votes) == 5
 
       post gameIdUrl,
-        params: game_request.to_json,
-        headers: { 'Content-Type': 'application/json' }
+           params: game_request.to_json,
+           headers: { 'Content-Type' => 'application/json' }
 
       expect(response.status).to eq 200
 
@@ -111,14 +111,14 @@ describe 'Games', :type => :request do
       game_request = { id: "#{uuid}" }
 
       post gameIdUrl,
-        params: game_request.to_json,
-        headers: { 'Content-Type': 'application/json' }
+           params: game_request.to_json,
+           headers: { 'Content-Type' => 'application/json' }
 
-        expect(response.status).to eq 200
+      expect(response.status).to eq 200
 
-        body = JSON.parse(response.body)
-        game_status = body['status']
-        expect(game_status) == 'ownit'
+      body = JSON.parse(response.body)
+      game_status = body['status']
+      expect(game_status) == 'ownit'
     end
   end
 

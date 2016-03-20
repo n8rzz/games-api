@@ -7,7 +7,7 @@ describe GamesController, :type => :routing do
     end
 
     it 'routes to #show' do
-      expect(:get => '/games/1').to route_to('games#show', :id => '1')
+      expect(:get => '/games/1').to route_to('games#show', id: '1')
     end
 
     it 'routes to #create' do
@@ -15,15 +15,15 @@ describe GamesController, :type => :routing do
     end
 
     it 'routes to #update' do
-      expect(:put => '/games/1').to route_to('games#update', :id => '1')
+      expect(:put => '/games/1').to route_to('games#update', id: '1')
     end
 
     it 'routes to #vote' do
-      expect(:post => '/games/1/vote').to route_to('games#vote', :id => '1')
+      expect(:post => '/games/1/vote').to route_to('games#vote', id: '1')
     end
 
     it 'routes to #owned' do
-      expect(:post => '/games/1/owned').to route_to('games#owned', :id => '1')
+      expect(:post => '/games/1/owned').to route_to('games#owned', id: '1')
     end
 
     it 'routes to #clear' do

@@ -4,8 +4,9 @@ AllCops:
     - Rakefile
     - config.ru
   Exclude:
+    - app/channels/**/*
     - bin/**/*
-    - config/initializers/devise.rb
+    - config/**/*
     - db/migrate/**/*
     - db/schema.rb
     - src/**/*
