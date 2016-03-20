@@ -1,24 +1,5 @@
 ## README
+[![Build Status](https://travis-ci.org/n8rzz/games-api.svg?branch=master)](https://travis-ci.org/n8rzz/games-api)
+[![Coverage Status](https://coveralls.io/repos/github/n8rzz/games-api/badge.svg?branch=develop)](https://coveralls.io/github/n8rzz/games-api?branch=develop)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Api for JSNat Games Api.
