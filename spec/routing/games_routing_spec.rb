@@ -22,8 +22,8 @@ describe GamesController, :type => :routing do
       expect(:post => '/games/1/vote').to route_to('games#vote', id: '1')
     end
 
-    it 'routes to #owned' do
-      expect(:post => '/games/1/owned').to route_to('games#owned', id: '1')
+    it 'routes to #purchase' do
+      expect(:post => '/games/1/purchase').to route_to('games#purchase', id: '1')
     end
 
     it 'routes to #clear' do

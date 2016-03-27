@@ -102,10 +102,10 @@ describe 'Games', :type => :request do
     end
   end
 
-  describe 'POST /games/:id/owned' do
+  describe 'POST /games/:id/purchase' do
     it 'changes game\'s status from wantit to owneit'  do
       uuid = SecureRandom.uuid
-      gameIdUrl = "/games/#{uuid}/owned"
+      gameIdUrl = "/games/#{uuid}/purchase"
       FactoryGirl.create :game, id: uuid, status: 'wantit'
 
       game_request = { id: "#{uuid}" }

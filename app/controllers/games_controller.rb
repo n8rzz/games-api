@@ -44,16 +44,18 @@ class GamesController < ApplicationController
     end
   end
 
-  # POST /games/1/owned
-  def owned
+  # POST /games/1/purchase
+  def purchase
     @game = Game.find(params[:id])
 
     if @game.status == 'wantit'
-      @game.status = 'ownit'
+      @game.change_status
 
-      render json: @game
+      render status: 200, json: @game
+    elsif
+      render status: 400, json: @game.errors
     else
-      render json: @game.errors, status: :unprocessable_entity
+       render json: @game.errors, status: :unprocessable_entity
     end
   end
 
